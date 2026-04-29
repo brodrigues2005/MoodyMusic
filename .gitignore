@@ -25,7 +25,8 @@ instance/
 # Uploads
 # ======================
 
-uploads/
+uploads/*
+!uploads/.gitkeep
 
 
 
