@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, UploadFile
 from routes.authentication import registration, authenticate, verify_jwt
-from routes.crud import upload_song, get_songs, get_song_file, delete_song
+from routes.crud import upload_song, get_songs, get_song_file, delete_song,calculate_emotion
 
 app = FastAPI()
 
@@ -65,3 +65,9 @@ async def delete_song_route(sid: int, request: Request):
     uid = auth["uid"]
 
     return delete_song(sid, uid)
+
+
+@app.post("/emotion")
+async def emotion(request:Request):
+    data = await request.json()
+    return calculate_emotion(data)
