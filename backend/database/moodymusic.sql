@@ -16,7 +16,7 @@ CREATE TABLE songs(
 	sid INT AUTO_INCREMENT,
     song_name VARCHAR(25),
     emotion VARCHAR(20),
-    file_path VARCHAR(35),
+    file_path VARCHAR(255),
     PRIMARY KEY (sid)
 );
 
