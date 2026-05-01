@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, UploadFile
 from routes.authentication import registration, authenticate, verify_jwt
-from routes.crud import upload_song, get_songs, get_song_file
+from routes.crud import upload_song, get_songs, get_song_file, delete_song
 
 app = FastAPI()
 
@@ -56,3 +56,12 @@ async def song_file_route(sid: int, request: Request):
     uid = auth["uid"]
 
     return get_song_file(sid, uid)
+
+@app.delete("/delete/songs/{sid}")
+async def delete_song_route(sid: int, request: Request):
+
+    auth = verify_jwt(request)
+
+    uid = auth["uid"]
+
+    return delete_song(sid, uid)

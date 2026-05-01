@@ -180,3 +180,85 @@ def get_song_file(sid, uid):
         cursor.close()
 
         conn.close()
+
+
+from fastapi import HTTPException
+from database.connection import get_db_connection
+import mysql.connector
+import os
+
+
+def delete_song(sid, uid):
+
+    conn = get_db_connection()
+
+    cursor = conn.cursor(dictionary=True)
+
+    try:
+
+        
+        query = """
+
+            SELECT S.file_path
+
+            FROM songs S
+            JOIN uploads U ON S.sid = U.sid
+
+            WHERE S.sid = %s AND U.uid = %s
+
+        """
+
+        cursor.execute(query, (sid, uid))
+
+        song = cursor.fetchone()
+
+        if song is None:
+
+            raise HTTPException(
+                status_code=403,
+                detail="Song not found or access denied"
+            )
+
+        file_path = song["file_path"]
+
+        # Delete song from database
+        query = """
+
+            DELETE FROM songs
+
+            WHERE sid = %s
+
+        """
+
+        cursor.execute(query, (sid,))
+
+        conn.commit()
+
+        # Delete local file
+        if os.path.exists(file_path):
+
+            os.remove(file_path)
+
+        return {
+
+            "success": True,
+
+            "message": "Song deleted successfully"
+
+        }
+
+    except mysql.connector.Error as err:
+
+        return {
+
+            "success": False,
+
+            "message": str(err)
+
+        }
+
+    finally:
+
+        cursor.close()
+
+        conn.close()
