@@ -262,3 +262,57 @@ def delete_song(sid, uid):
         cursor.close()
 
         conn.close()
+
+
+def calculate_emotion(data):
+   
+    smile = max(
+        data.get("mouthSmileLeft", 0),
+        data.get("mouthSmileRight", 0)
+    )
+
+    frown = max(
+        data.get("mouthFrownLeft", 0),
+        data.get("mouthFrownRight", 0)
+    )
+
+    brow_down = max(
+        data.get("browDownLeft", 0),
+        data.get("browDownRight", 0)
+    )
+
+    brow_up = max(
+        data.get("browOuterUpLeft", 0),
+        data.get("browOuterUpRight", 0),
+        data.get("browInnerUp", 0)
+    )
+
+    eye_wide = max(
+        data.get("eyeWideLeft", 0),
+        data.get("eyeWideRight", 0)
+    )
+
+    jaw_open = data.get("jawOpen", 0)
+    
+
+    if smile > 0.5:
+
+        return {"emotion": "happy"}
+
+    if frown > 0.4 and brow_up > 0.3:
+
+        return {"emotion": "sad"}
+
+    if brow_down > 0.45:
+
+        return {"emotion": "angry"}
+
+    if eye_wide > 0.5 and jaw_open > 0.3:
+
+        return {"emotion": "surprised"}
+
+    if jaw_open > 0.4 and brow_up > 0.3:
+
+        return {"emotion": "surprised"}
+
+    return {"emotion": "neutral"}
