@@ -82,9 +82,10 @@ def registration(data):
         conn.close()
 
 
-def create_jwt(uid):
+def create_jwt(uid,name):
     payload = {
         "uid": uid,
+        "name": name,
         "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=2)
     }
 
@@ -104,7 +105,7 @@ def authenticate(data):
     cursor = conn.cursor(dictionary=True)
 
     query = """
-        SELECT uid, email, hashed_password
+        SELECT uid, email, name, hashed_password
         FROM users
         WHERE email = %s
     """
@@ -132,7 +133,7 @@ def authenticate(data):
                 "message": "Invalid email or password"
             }
 
-        token = create_jwt(user["uid"])
+        token = create_jwt(user["uid"],user["name"])
 
         return {
             "success": True,
