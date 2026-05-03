@@ -4,6 +4,19 @@ from routes.crud import upload_song, get_songs, get_song_file, delete_song,calcu
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.post("/registration")
 async def register(request:Request):
     data = await request.json()
