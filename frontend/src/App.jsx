@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MusicPlayer from "./pages/MusicPlayer";
+import SongCollection from "./pages/SongCollection";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -24,6 +25,15 @@ function App() {
           element={
             <ProtectedRoute>
               <MusicPlayer />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/songcollection"
+          element={
+            <ProtectedRoute>
+              <SongCollection />
             </ProtectedRoute>
           }
         />

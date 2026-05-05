@@ -1,0 +1,104 @@
+.songs-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: linear-gradient(135deg, #3b0764, #6d28d9, #9333ea);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.songs-card {
+  width: 900px;
+  padding: 35px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  color: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.songs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.upload-btn,
+.delete-btn,
+.upload-modal button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.upload-btn {
+  background: white;
+  color: #6d28d9;
+}
+
+.song-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.song-item {
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.song-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.song-actions audio {
+  width: 260px;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-modal {
+  width: 360px;
+  padding: 35px;
+  border-radius: 20px;
+  background: white;
+  color: #3b0764;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.upload-modal input,
+.upload-modal select {
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+}
