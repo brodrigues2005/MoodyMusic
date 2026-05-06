@@ -102,3 +102,9 @@
   display: flex;
   gap: 12px;
 }
+
+.songs-header-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}

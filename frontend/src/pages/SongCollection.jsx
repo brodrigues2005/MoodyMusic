@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styling/songcollection.css";
+import { useNavigate } from "react-router-dom";
 
 function SongCollection() {
   const [songs, setSongs] = useState([]);
@@ -12,6 +13,14 @@ function SongCollection() {
   const [audioUrls, setAudioUrls] = useState({});
 
   const API_URL = "http://127.0.0.1:8000";
+
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+
+    navigate("/");
+  }
 
   async function getSongBlobUrl(songId) {
     const token = localStorage.getItem("token");
@@ -114,9 +123,22 @@ function SongCollection() {
         <div className="songs-header">
           <h1>Your Songs</h1>
 
-          <button onClick={() => setShowUpload(true)} className="upload-btn">
-            Upload Song
-          </button>
+          <div className="songs-header-buttons">
+            <button
+              onClick={() => navigate("/musicplayer")}
+              className="upload-btn"
+            >
+              Music Player
+            </button>
+
+            <button onClick={() => setShowUpload(true)} className="upload-btn">
+              Upload Song
+            </button>
+
+            <button onClick={handleLogout} className="delete-btn">
+              Logout
+            </button>
+          </div>
         </div>
 
         <div className="song-list">

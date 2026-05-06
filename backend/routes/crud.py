@@ -294,19 +294,6 @@ def calculate_emotion(data):
 
     jaw_open = data.get("jawOpen", 0)
     
-
-    if smile > 0.5:
-
-        return {"emotion": "happy"}
-
-    if frown > 0.4 and brow_up > 0.3:
-
-        return {"emotion": "sad"}
-
-    if brow_down > 0.45:
-
-        return {"emotion": "angry"}
-
     if eye_wide > 0.5 and jaw_open > 0.3:
 
         return {"emotion": "surprised"}
@@ -314,5 +301,17 @@ def calculate_emotion(data):
     if jaw_open > 0.4 and brow_up > 0.3:
 
         return {"emotion": "surprised"}
+    if smile > 0.5:
+
+        return {"emotion": "happy"}
+
+    if frown > 0.25 or brow_up > 0.35:
+        return {"emotion": "sad"}
+
+    if brow_down > 0.45:
+
+        return {"emotion": "angry"}
+
+    
 
     return {"emotion": "neutral"}
