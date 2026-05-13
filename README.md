@@ -37,7 +37,7 @@ Users can register, log in, upload songs, tag them with emotions, manage their s
 ## 1. Clone the Repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/brodrigues2005/MoodyMusic.git
 cd MoodyMusic
 ```
 
