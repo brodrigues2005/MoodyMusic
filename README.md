@@ -41,7 +41,7 @@ git clone <your-repo-url>
 cd MoodyMusic
 ```
 
-## Backend Setup
+## 2. Backend Setup
 
 Navigate to the backend folder and Install the required Python packages:
 
@@ -70,5 +70,33 @@ uvicorn main:app --reload
 The backend should run at:
 ```bash
 http://127.0.0.1:8000
+```
+
+## 3. Frontend Setup
+
+Open a new terminal and navigate to the frontend folder:
+
+```bash
+cd frontend
+```
+
+Install the required packages:
+```bash
+npm install
+```
+
+Install MediaPipe:
+```bash
+npm install @mediapipe/tasks-vision
+```
+
+Run the frontend development server:
+```bash
+npm run dev
+```
+
+The frontend should run at:
+```bash
+http://localhost:5173
 ```
 
