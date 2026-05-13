@@ -51,16 +51,24 @@ pip install fastapi uvicorn bcrypt PyJWT python-dotenv mysql-connector-python py
 ```
 
 Create a .env file in the backend folder:
+```bash
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_mysql_password
 DB_NAME=your_database_name
 JWT_SECRET=your_secret_key
+```
 
 Make sure MySQL is running and your database/tables are created, using the query located in backend/database.
 
 Run the FastAPI backend:
+
+```bash
 uvicorn main:app --reload
+```
 
 The backend should run at:
+```bash
 http://127.0.0.1:8000
+```
+
