@@ -3,7 +3,7 @@ import mysql.connector
 from fastapi import HTTPException
 from fastapi.responses import FileResponse
 import os
-
+import uuid
 
 def upload_song(data,file, uid):
     song_name = data["song_name"]
@@ -15,7 +15,9 @@ def upload_song(data,file, uid):
 
     os.makedirs(uploads_folder, exist_ok=True)
 
-    file_path = f"{uploads_folder}/{filename}"
+    unique_filename = f"{uuid.uuid4()}_{file.filename}"
+
+    file_path = f"{uploads_folder}/{unique_filename}"
 
     with open(file_path, "wb") as buffer:
 
