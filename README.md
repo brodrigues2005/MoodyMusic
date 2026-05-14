@@ -35,7 +35,7 @@ Users can register, log in, upload songs, tag them with emotions, manage their s
 
 ## System Architecture
 
-![Architecture Diagram](images/Architecture.png)
+<img src="images/Architecture.png" width="700">
 
 ## Setup Instructions
 
