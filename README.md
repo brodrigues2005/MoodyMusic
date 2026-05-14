@@ -1,4 +1,3 @@
-
 # Moody Music
 
 Moody Music is a full-stack web application that uses facial expression detection to play songs based on the user's current emotion.
@@ -8,6 +7,7 @@ Users can register, log in, upload songs, tag them with emotions, manage their s
 ## Tech Stack
 
 ### Frontend
+
 - React
 - Vite
 - React Router
@@ -15,6 +15,7 @@ Users can register, log in, upload songs, tag them with emotions, manage their s
 - CSS
 
 ### Backend
+
 - FastAPI
 - MySQL
 - JWT authentication
@@ -31,6 +32,10 @@ Users can register, log in, upload songs, tag them with emotions, manage their s
 - Preview uploaded songs
 - Webcam-based facial expression detection
 - Emotion-based music playback
+
+## System Architecture
+
+![Architecture Diagram](images/Architecture.png)
 
 ## Setup Instructions
 
@@ -51,6 +56,7 @@ pip install fastapi uvicorn bcrypt PyJWT python-dotenv mysql-connector-python py
 ```
 
 Create a .env file in the backend folder:
+
 ```bash
 DB_HOST=localhost
 DB_USER=root
@@ -68,6 +74,7 @@ uvicorn main:app --reload
 ```
 
 The backend should run at:
+
 ```bash
 http://127.0.0.1:8000
 ```
@@ -81,22 +88,25 @@ cd frontend
 ```
 
 Install the required packages:
+
 ```bash
 npm install
 ```
 
 Install MediaPipe:
+
 ```bash
 npm install @mediapipe/tasks-vision
 ```
 
 Run the frontend development server:
+
 ```bash
 npm run dev
 ```
 
 The frontend should run at:
+
 ```bash
 http://localhost:5173
 ```
-
